@@ -1,0 +1,64 @@
+/* Removed bright-white text and exaggerated hover motion so the floating enquiry button stays premium and restrained. */
+.floating-wa {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--brand-whatsapp);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  box-shadow: 0 4px 24px color-mix(in srgb, var(--brand-whatsapp) 28%, transparent);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: wa-entrance 600ms 1.5s var(--ease-luxury) backwards;
+  color: var(--text-primary);
+}
+
+@keyframes wa-entrance {
+  from { transform: scale(0) rotate(-180deg); opacity: 0; }
+  to { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.floating-wa:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px color-mix(in srgb, var(--brand-whatsapp) 34%, transparent);
+}
+
+.floating-wa::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--brand-whatsapp);
+  animation: wa-pulse 2.5s ease-out infinite;
+  z-index: -1;
+}
+
+@keyframes wa-pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* Matched the tooltip colors to the new dark theme for better consistency. */
+.floating-wa-tooltip {
+  position: absolute;
+  right: 72px;
+  white-space: nowrap;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  font-size: 12px;
+  padding: 8px 14px;
+  opacity: 0;
+  transform: translateX(8px);
+  border: 1px solid var(--border-gold);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.floating-wa:hover .floating-wa-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}

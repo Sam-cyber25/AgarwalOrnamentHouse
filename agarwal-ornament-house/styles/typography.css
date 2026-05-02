@@ -1,0 +1,118 @@
+/* Tightened heading sizes and line-heights so the editorial hierarchy feels deliberate across every page. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+}
+
+h1 {
+  font-size: clamp(42px, 6vw, 72px);
+  line-height: 1.15;
+}
+
+h2 {
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: clamp(20px, 2.5vw, 28px);
+  line-height: 1.3;
+}
+
+h4 {
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.35;
+}
+
+h5,
+h6 {
+  line-height: 1.4;
+}
+
+/* Unified body copy so all descriptive text lands in the warmer secondary tone instead of drifting into dark-on-dark contrast. */
+body,
+p,
+li,
+td,
+label,
+input,
+textarea,
+select,
+blockquote {
+  font-family: var(--font-body);
+  font-size: clamp(15px, 1.5vw, 17px);
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+small {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+strong {
+  font-weight: 600;
+}
+
+/* Added a shared rhythm between headings and supporting copy to keep every section breathing evenly. */
+:is(h1, h2, h3, h4, h5, h6) + p,
+:is(h1, h2, h3, h4, h5, h6) + .section-subtitle,
+:is(h1, h2, h3, h4, h5, h6) + .hero-tagline,
+:is(h1, h2, h3, h4, h5, h6) + .pdp-meta {
+  margin-top: 16px;
+}
+
+/* Standardized captions, labels, and metadata so uppercase supporting text keeps the same quiet gold-led hierarchy. */
+.section-title,
+.hero-title,
+.pdp-title,
+.trust-title,
+.category-card-title,
+.product-card-name,
+.newsletter-title {
+  color: var(--text-primary);
+}
+
+.section-subtitle,
+.hero-tagline,
+.heritage-body,
+.trust-desc,
+.wa-cta-body,
+.detail-value,
+.footer-brand-desc {
+  color: var(--text-secondary);
+}
+
+.eyebrow,
+.product-card-category,
+.category-card-sub,
+.category-card-cta,
+.pdp-meta,
+.detail-key,
+.detail-label,
+.results-count,
+.logo-sub,
+.footer-col-heading,
+.stat-label,
+.drawer-group-label,
+.trust-badge-item,
+.product-card-enquire {
+  color: var(--text-muted);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.section-title {
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  margin-bottom: 32px;
+}
