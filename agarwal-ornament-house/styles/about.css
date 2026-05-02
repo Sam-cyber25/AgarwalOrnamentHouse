@@ -1,0 +1,160 @@
+/* Rebalanced the about page sections around darker editorial surfaces while preserving the existing narrative layout. */
+#about-page .about-hero {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.founder-section {
+  padding: var(--section-pad-y) 0;
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--section-fade-mid) 100%);
+}
+
+.founder-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.founder-image-wrap {
+  background: var(--bg-tertiary);
+  overflow: hidden;
+  min-height: 640px;
+  border: 1px solid var(--border-gold);
+  border-radius: var(--card-radius);
+}
+
+.founder-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.founder-copy p {
+  color: var(--text-secondary);
+  margin-top: 18px;
+}
+
+/* Converted the timeline into dark milestone cards so the heritage story stays consistent with the new card language. */
+.timeline-section {
+  background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--section-fade-soft) 100%);
+  border-top: 1px solid var(--border-gold);
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.timeline-wrap {
+  position: relative;
+  max-width: 1000px;
+  margin: 64px auto 0;
+  padding: 32px 0;
+}
+
+.timeline-wrap::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: var(--gold);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 0 48px 48px;
+}
+
+.timeline-item:nth-child(odd) {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+  left: 50%;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 6px rgba(201, 167, 78, 0.12);
+}
+
+.timeline-item:nth-child(odd)::before {
+  right: -9px;
+}
+
+.timeline-item:nth-child(even)::before {
+  left: -9px;
+}
+
+.timeline-card {
+  background: var(--bg-tertiary);
+  padding: 32px;
+  border: 1px solid var(--border-gold);
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow-card);
+}
+
+.timeline-year {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 52px;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.timeline-heading {
+  margin-top: 12px;
+  font-size: 18px;
+  color: var(--text-primary);
+}
+
+.timeline-text {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 12px;
+}
+
+/* Kept the values section dark, but replaced the light hover inversion with the same refined border-led interaction used site-wide. */
+.about-values-section {
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--section-fade-deep) 100%);
+}
+
+.about-values-section .section-title {
+  color: var(--text-primary);
+}
+
+.about-values-section .trust-pillar {
+  background: var(--bg-tertiary);
+}
+
+.about-values-section .trust-title {
+  color: var(--text-primary);
+}
+
+.about-values-section .trust-desc {
+  color: var(--text-secondary);
+  opacity: 0.9;
+}
+
+.about-values-section .trust-pillar:hover {
+  background: var(--bg-tertiary);
+}
+
+.about-values-section .trust-pillar:hover .trust-title {
+  color: var(--text-primary);
+}
+
+.about-values-section .trust-pillar:hover .trust-desc {
+  color: var(--text-secondary);
+  opacity: 0.9;
+}
