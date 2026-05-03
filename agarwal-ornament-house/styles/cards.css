@@ -1,0 +1,197 @@
+/* Refines product cards into darker display trays with controlled lift, a soft gold aura, and more cinematic hover timing. */
+.product-card {
+  /* Fix: ensure all product cards in a row stretch to identical height. */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--card-radius);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transform: translateY(0);
+  transition:
+    transform 0.4s var(--ease-cinematic),
+    border-color 0.4s var(--ease-cinematic),
+    box-shadow 0.4s var(--ease-cinematic);
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--border-gold-active);
+  box-shadow: var(--gold-aura);
+}
+
+/* Adds the requested dark-to-transparent image veil without disturbing the existing markup. */
+.product-card-img-wrap {
+  position: relative;
+  /* Fix: enforce consistent square media area across all cards. */
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(248, 246, 242, 0.04) 0%, rgba(255, 255, 255, 0.02) 100%), var(--bg-secondary);
+}
+
+.product-card-img-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, color-mix(in srgb, var(--bg-primary) 85%, transparent) 0%, color-mix(in srgb, var(--bg-primary) 24%, transparent) 42%, transparent 72%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease-cinematic);
+}
+
+.product-card:hover .product-card-img-wrap::after {
+  opacity: 1;
+}
+
+.product-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition:
+    opacity 0.4s var(--ease-cinematic),
+    transform 0.5s var(--ease-cinematic);
+}
+
+.secondary-img {
+  opacity: 0;
+}
+
+.product-card:hover .primary-img {
+  opacity: 0;
+}
+
+.product-card:hover .secondary-img {
+  opacity: 1;
+}
+
+.product-card:hover .product-card-img {
+  transform: scale(1.06);
+}
+
+/* Keeps product badges quiet and premium against the darker velvet surface. */
+.product-badges {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.badge {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border: 1px solid var(--border-gold);
+  background: color-mix(in srgb, var(--bg-primary) 72%, transparent);
+  color: var(--text-primary);
+  backdrop-filter: blur(8px);
+}
+
+.badge-new {
+  background: color-mix(in srgb, var(--gold) 14%, transparent);
+  color: var(--gold-light);
+}
+
+/* Preserves the enquiry actions while making the reveal feel deliberate instead of abrupt. */
+.product-card-actions {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 1px;
+  transform: translateY(18px);
+  opacity: 0;
+  z-index: 3;
+  transition:
+    transform 0.4s var(--ease-cinematic),
+    opacity 0.4s var(--ease-cinematic);
+}
+
+.product-card:hover .product-card-actions {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.product-wa-btn,
+.product-view-btn {
+  flex: 1;
+  height: 44px;
+  min-width: 0;
+  font-size: 9px;
+  border-radius: 0;
+}
+
+/* Nudges the text block upward on hover so the card feels like it is rising into the spotlight. */
+.product-card-info {
+  /* Fix: make the card body fill remaining height consistently. */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  transform: translateY(0);
+  transition: transform 0.4s var(--ease-cinematic);
+}
+
+.product-card:hover .product-card-info {
+  transform: translateY(-8px);
+}
+
+.product-card-category {
+  /* Fix: card label text should not render too small. */
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #C9A74E;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.product-card-name {
+  font-family: var(--font-heading);
+  font-size: clamp(20px, 2vw, 26px);
+  color: var(--text-primary);
+  font-weight: 400;
+  margin-bottom: 14px;
+}
+
+.product-card-enquire {
+  /* Fix: small CTA label should meet the minimum label size. */
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.product-card-enquire:hover {
+  color: var(--gold-light);
+}
+
+/* Keeps the desktop catalogue layout intact while preserving the existing swiper fallback below desktop. */
+@media (min-width: 1024px) {
+  .products-swiper .swiper-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--grid-gap);
+    /* Fix: keep featured product cards equal height within the grid. */
+    align-items: stretch;
+  }
+
+  .products-swiper .swiper-slide {
+    width: auto !important;
+    height: 100%;
+  }
+
+  .products-swiper .swiper-pagination {
+    display: none;
+  }
+}

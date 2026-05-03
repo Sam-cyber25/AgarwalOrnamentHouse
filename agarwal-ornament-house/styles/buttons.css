@@ -1,0 +1,111 @@
+/* Simplified the button system so CTAs feel premium and precise instead of glossy or overstated. */
+.btn {
+  font-family: var(--font-sans);
+  font-size: var(--text-2xs);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  height: 52px;
+  padding: 0 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    opacity 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  border-radius: var(--btn-radius);
+}
+
+.btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* Updated the primary CTA to rely on clean contrast and color shift only, with no glow or lift. */
+.btn-primary {
+  background: var(--gold);
+  color: var(--bg-primary);
+  border: 1px solid var(--gold);
+}
+
+.btn-primary::before {
+  content: none;
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background: var(--gold-light);
+  color: var(--bg-primary);
+  border-color: var(--gold-light);
+}
+
+.btn-primary:active {
+  background: var(--gold-deep);
+  border-color: var(--gold-deep);
+}
+
+/* Refined the outline treatment to stay minimal until interaction, then fill cleanly with gold. */
+.btn-ghost {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+}
+
+.btn-ghost::after {
+  content: none;
+}
+
+.btn-ghost:hover,
+.btn-ghost:focus-visible {
+  background: var(--gold);
+  color: var(--bg-primary);
+  border-color: var(--gold);
+}
+
+/* Kept the dark button for secondary actions, but aligned it to the new surface and contrast system. */
+.btn-dark {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-gold);
+}
+
+.btn-dark:hover,
+.btn-dark:focus-visible {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--gold);
+}
+
+/* Preserved the WhatsApp CTA while removing bright-white text and heavy hover effects. */
+.btn-whatsapp {
+  background: var(--brand-whatsapp);
+  color: var(--text-primary);
+  border: 1px solid var(--brand-whatsapp);
+  min-width: 200px;
+}
+
+.btn-whatsapp:hover,
+.btn-whatsapp:focus-visible {
+  background: var(--brand-whatsapp-hover);
+  border-color: var(--brand-whatsapp-hover);
+  color: var(--text-primary);
+}
+
+.btn-sm {
+  height: 40px;
+  padding: 0 20px;
+  font-size: 9px;
+}
+
+.btn-lg {
+  height: 60px;
+  padding: 0 48px;
+  font-size: 11px;
+}
